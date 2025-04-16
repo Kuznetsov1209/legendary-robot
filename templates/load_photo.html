@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка фотографии</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Загрузка фотографии для участия в миссии</h1>
+
+        <div class="card mx-auto" style="max-width: 500px;">
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Приложите фотографию</label>
+                        <input class="form-control" type="file" id="photo" name="photo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+
+                {% if photo_url %}
+                <div class="mt-4 text-center">
+                    <h4>Ваша фотография:</h4>
+                    <img src="{{ photo_url }}" class="img-thumbnail mt-2" style="max-height: 300px;">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
